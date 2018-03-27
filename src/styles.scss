@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'scss/info-window.scss';
+@import 'scss/theme.scss';
+
+$menu-width: 25em; 
+
+agm-map {
+  height: 100vh;
+}
+
+elbil-menu {
+  z-index: 0;
+  height: 100vh;
+  display: block;
+  width: $menu-width;
+  position: fixed;
+  left: calc( 3em - #{$menu-width} );
+
+  .menu-btn {
+    right: 0;
+    position: absolute;
+  }
+  
+  mat-card {
+    height: 100vh;
+  }
+
+  &.toggled {
+    left: 0;
+  }
+
+  transition: left 0.5s;
+}
+
+elbil-map {
+  z-index: 1;
+  display: block;
+  margin-left: 3em;
+  width: calc( 100% - 3em);
+
+  &.toggled {
+    width: calc( 100% - #{$menu-width});
+    margin-left: $menu-width;
+  }
+
+  transition: left 0.5s, margin 0.5s;
+}
