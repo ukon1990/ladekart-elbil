@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  menuToggled = true;
-
-  toggleMenu(): void {
-    this.menuToggled = !this.menuToggled;
-  }
+  title = 'elbil';
 }
