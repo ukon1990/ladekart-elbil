@@ -1,0 +1,15 @@
+<agm-map [latitude]="userLocation.coords.latitude" [longitude]="userLocation.coords.longitude">
+
+  <!-- The users location -->
+  <agm-marker
+    iconUrl="assets/icons/my_pos_marker.svg"
+    [latitude]="userLocation.coords.latitude"
+    [longitude]="userLocation.coords.longitude">
+  </agm-marker>
+  <agm-circle *ngIf="userLocation.coords.accuracy > 0"
+    [latitude]="userLocation.coords.latitude"
+    [longitude]="userLocation.coords.longitude"
+    [radius]="userLocation.coords.accuracy"
+    fillOpacity="0.3">
+  </agm-circle>
+</agm-map>
