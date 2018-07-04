@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { googleMapsAPIKey } from './keys';
+import { DatabaseService } from './services/database.service';
+import { StationService } from './services/station.service';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,7 @@ import { googleMapsAPIKey } from './keys';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({
       apiKey: googleMapsAPIKey,
@@ -27,8 +32,12 @@ import { googleMapsAPIKey } from './keys';
     }),
     AgmJsMarkerClustererModule,
     AgmSnazzyInfoWindowModule,
+    MaterialModule
   ],
-  providers: [],
+  providers: [
+    DatabaseService,
+    StationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

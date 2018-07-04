@@ -1,5 +1,7 @@
-<agm-map [latitude]="userLocation.coords.latitude" [longitude]="userLocation.coords.longitude">
-
+<agm-map
+  [latitude]="userLocation.coords.latitude"
+  [longitude]="userLocation.coords.longitude"
+  (boundsChange)="boundsChange($event)">
   <!-- The users location -->
   <agm-marker
     iconUrl="assets/icons/my_pos_marker.svg"
@@ -12,4 +14,40 @@
     [radius]="userLocation.coords.accuracy"
     fillOpacity="0.3">
   </agm-circle>
+
+  <!-- Station markers -->
+  <agm-marker-cluster *ngIf="stations" imagePath="assets/icons/cluster/m">
+    <!-- [imagePath]="'assets/icons/cluster/'" -->
+    <agm-marker *ngFor="let station of visibleStations"
+      imageUrl="assets/icons/marker_blue_v3.svg"
+      [latitude]="station.csmd.Position.lat"
+      [longitude]="station.csmd.Position.lng">
+      <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+        <ng-template>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>
+                {{ station.csmd.name }}
+              </mat-card-title>
+              <mat-card-subtitle>
+                A subtitle
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              Content
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button>
+                <i class="far fa-heart"></i>
+              </button>
+
+              <button mat-icon-button>
+                <i class="fas fa-location-arrow"></i>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-template>
+      </agm-snazzy-info-window>
+    </agm-marker>
+</agm-marker-cluster>
 </agm-map>

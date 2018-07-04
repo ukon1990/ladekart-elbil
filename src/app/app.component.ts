@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from './services/database.service';
 
 @Component({
   selector: 'elbil-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'elbil';
+
+  constructor(private db: DatabaseService) {
+    this.db.constructor();
+  }
 }
