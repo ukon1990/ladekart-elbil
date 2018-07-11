@@ -53,16 +53,16 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log();
+    console.log('stuff', this.googleMap);
   }
 
   boundsChange(change): void {
     console.log('Change', change);
     // this.visibleStations = this.stations;
-    this.stations.forEach(s => {
+    this.stations.forEach(s => {/*
       if (this.mapAPI.getBounds().contains(s.csmd.Position as any)) {
         this.visibleStations.push(s);
-      }
+      }*/
     });
   }
 }
